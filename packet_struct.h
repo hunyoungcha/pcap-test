@@ -1,7 +1,11 @@
 #include <pcap.h>
-#include <arpa/inet.h>
 
 #pragma pack(1)
+
+
+//ip 헤더에 options와 data 필드 고려하는 로직 필요
+//tcp 헤더 역시 마찬가지
+
 
 struct ethernet_header {
     uint8_t dstMac[6];
@@ -33,8 +37,7 @@ struct tcp_header {
     uint32_t SequenceNumber;
     uint32_t ACKNumber;
 
-    uint8_t DataOffset[4];
-    uint8_t Reserved[4];
+    uint8_t DataOffsetAndReserved;
     uint8_t Flag;
     uint16_t Window;
     
