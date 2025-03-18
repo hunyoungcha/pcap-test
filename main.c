@@ -16,7 +16,8 @@ int main(int argc, char* argv[]){
 		const u_char* packet;
 	
 		int res = pcap_next_ex(pcap, &header, &packet);
-		
+		//에러처리 필요
+
 		struct ethernet_header *eth = (struct ethernet_header *)packet;
 		int ethernet_header_length = sizeof(struct ethernet_header); 
 		
@@ -27,6 +28,7 @@ int main(int argc, char* argv[]){
 		int tcp_header_length = (tcp->DataOffsetAndReserved >> 4) * 4; 
 
 		printf("======================================================\n");
+		
 		printf("Source MAC: %02x:%02x:%02x:%02x:%02x:%02x\n",
 			eth->srcMac[0], eth->srcMac[1], eth->srcMac[2],
 			eth->srcMac[3], eth->srcMac[4], eth->srcMac[5]);

@@ -3,10 +3,6 @@
 #pragma pack(1)
 
 
-//ip 헤더에 options와 data 필드 고려하는 로직 필요
-//tcp 헤더 역시 마찬가지
-
-
 struct ethernet_header {
     uint8_t dstMac[6];
     uint8_t srcMac[6];
@@ -39,8 +35,10 @@ struct tcp_header {
 
     uint8_t DataOffsetAndReserved;
     uint8_t Flag;
+
     uint16_t Window;
     
     uint16_t Checksum;
     uint16_t UrgentPointer;
 };
+
